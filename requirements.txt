@@ -1,8 +1,0 @@
-langchain
-openai
-PyPDF2
-faiss-cpu
-huggingface-hub
-python-dotenv
-sentence-transformers
-llama-cpp-python==0.1.65
