@@ -57,9 +57,9 @@ def handle_user_input(user_question):
 
 def main():
     load_dotenv()
-    st.set_page_config("Chat with Multiple PDFs", page_icon=":books:")
+    st.set_page_config("Tutor Virtual", page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
-    st.header("Chat with Multiple PDFs :books:")
+    st.header("Tutor Virtual :books:")
     if "conversation" not in st.session_state:
         st.session_state.conversation=None
     if "chat_history" not in st.session_state:
@@ -68,15 +68,20 @@ def main():
     if user_question:
         handle_user_input(user_question)
     with st.sidebar:
-        st.header("Chat with PDF 💬")
-        st.title("LLM Chatapp using LangChain")
+        st.header("Bases de Datos 1")
+        st.title("Seleccione un capítulo")
+        cap1 = st.button('Capítulo 1')
+        cap2 = st.button('Capítulo 2')
+        cap3 = st.button('Capítulo 3')
+
+
         st.subheader("Your Documents")
         pdf_docs = st.file_uploader("Upload the PDF Files here and Click on Process", accept_multiple_files=True)
-        st.markdown('''
-        - [Streamlit](https://streamlit.io/)
-        - [LangChain](https://python.langchain.com/)
-        - [OpenAI](https://platform.openai.com/docs/models) LLM Model
-        ''')
+        # st.markdown('''
+        # - [Streamlit](https://streamlit.io/)
+        # - [LangChain](https://python.langchain.com/)
+        # - [OpenAI](https://platform.openai.com/docs/models) LLM Model
+        # ''')
         st.write('Do Checkout the YouTube Channel as well for amazing content [Muhammad Moin](https://www.youtube.com/channel/UC--6PuiEdiQY8nasgNluSOA)')
         if st.button('Process'):
             with st.spinner("Processing"):
@@ -89,7 +94,12 @@ def main():
                 # Create Conversation Chain
                 st.session_state.conversation=get_conversation_chain(vectorstore)
                 st.success("Done!")
-
+    if cap1:
+        st.write('cap 1')
+    if cap2:
+        st.write('cap 2')
+    if cap3:
+        st.write('cap 3')
 
 
 

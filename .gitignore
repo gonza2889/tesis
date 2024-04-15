@@ -1,2 +1,4 @@
 # created by virtualenv automatically
-
+.env
+/demo_azure_streamlit
+/demo_azure_streamlit-master
