@@ -53,11 +53,22 @@ def handle_user_input(user_question):
             #st.write(message)
             st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
 
+def list_files(directory):
+    return [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
 
 
 def main():
     load_dotenv()
     st.set_page_config("Tutor Virtual", page_icon=":books:")
+
+    local_folder_path = "Teoricos"
+    files = list_files(local_folder_path)
+    st.sidebar.header("Files in the Local Folder")
+    selected_files = st.sidebar.multiselect("Select files to upload", files)
+    st.write("Selected Files:")
+    for file in selected_files:
+        st.write(f"- {file}")
+
     st.write(css, unsafe_allow_html=True)
     st.header("Tutor Virtual :books:")
     if "conversation" not in st.session_state:
@@ -67,6 +78,11 @@ def main():
     user_question = st.text_input("Ask a question from your documents")
     if user_question:
         handle_user_input(user_question)
+    
+    # Carga de los pdfs
+    # pdf_docs = st.file_uploader("Upload the PDF Files here and Click on Process", accept_multiple_files=True)
+    
+    
     with st.sidebar:
         st.header("Bases de Datos 1")
         st.title("Seleccione un capítulo")
