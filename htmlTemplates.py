@@ -15,7 +15,6 @@ css = '''
 .chat-message .avatar img {
   max-width: 78px;
   max-height: 78px;
-  border-radius: 50%;
   object-fit: cover;
 }
 .chat-message .message {
@@ -28,7 +27,7 @@ css = '''
 bot_template = '''
 <div class="chat-message bot">
     <div class="avatar">
-        <img src="https://i.ibb.co/GxFxZjj/image1.png">
+        <img src="https://i.ibb.co/HHwLRVy/logoUDE.jpg">
     </div>
     <div class="message">{{MSG}}</div>
 </div>
