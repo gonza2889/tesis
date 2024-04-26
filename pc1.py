@@ -14,7 +14,7 @@ from htmlTemplates import css, bot_template, user_template
 embedding_model_name = os.environ.get('EMBEDDING_MODEL_NAME')
 
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
-
+# comentario nuevo
 # Carga el texto de documentos PDF
 def cargar_texto_desde_pdf(ruta_pdf):
     # st.write(ruta_pdf)
