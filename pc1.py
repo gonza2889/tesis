@@ -111,7 +111,7 @@ def main():
     load_dotenv()
     st.set_page_config("Tutor Virtual", page_icon=":books:")
 
-    st.sidebar.header("Bases de Datos 1")
+    st.sidebar.header("Bases de Datos 3")
     # st.sidebar.title("Seleccione un capítulo")
 
     # MULTISELECT CON LISTADO DE PDFs
