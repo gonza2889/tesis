@@ -45,7 +45,7 @@ def getModelCompletion(message: str):
 
     headers = {
       'Content-Type': 'application/json',
-      'Authorization': '<API_KEY>'
+      'Authorization': 'Bearer '
     }
     
     response = requests.request("POST", url, headers = headers, data = payload)
@@ -56,7 +56,7 @@ def getModelCompletion(message: str):
 col1, col2 = st.columns([10,10])
 
 with col1:
-    if preguntaUruario := st.chat_input("Your question"): # Prompt for user input and save to chat history
+    if preguntaUruario := st.chat_input(""):
         st.session_state.messages.append({"role": "user", "content": preguntaUruario})
 
     for message in st.session_state.messages: # Mostrar mensajes anteriores
@@ -71,8 +71,20 @@ with col1:
                 },
                 {
                     "role": "user",
-                    "content": f"Puedes darme el codigo mermaid para representar un diagrama entidad relacion para este ejercicio (necesito que me respondas solo con el código, sin ninguna palabra extra. Al final de la respuesta ponle mermaid -code- END```):\n {preguntaUruario}\n"
-                }
+                    "content": 'Ejemplo: \nerDiagram\n    ESTUDIANTE ||--o{ GRUPO-TRABAJO-1 : "forma"\n    GRUPO-TRABAJO-1 ||--|| GRUPO-TRABAJO-2 : "se fusiona en"\n    ESTUDIANTE {\n        int numero "Número de estudiante"\n    }\n    GRUPO-TRABAJO-1 {\n        string id "Identificador de grupo 1"\n    }\n    GRUPO-TRABAJO-2 {\n        string id "Identificador de grupo 2"\n    }'
+                },
+                {
+                    "role": "user",
+                    "content": "Ejemplo: \n erDiagram\n    Materia {\n        string nombre\n        int puntaje\n        string codigo\n    }\n    Profesor {\n        string nombre\n        string cedula_identidad\n        string telefono\n        string direccion\n    }\n    Clase {\n        string salon\n        string hora_consulta\n    }\n    Materia ||--o{ Profesor : DictadaPor\n    Profesor }o--|| Clase : Dicta"
+                },
+                {
+                    "role": "user",
+                    "content": "Ejemplo: \nerDiagram\n    Jugador {\n        int numero_inscripcion\n        int cantidad_torneos_ganados\n    }\n    Partido {\n        date fecha\n        string hora\n        string cancha\n    }\n    Dama {\n        float estatura\n    }\n    Caballero {\n        float peso\n    }\n    Pareja {\n        string nombre\n    }\n    Jugador ||--o{ Pareja : Pertenecer\n    Dama }o--|| Pareja : Integrar\n    Caballero }o--|| Pareja : Integrar\n    Partido ||--|| Pareja : Jugar"
+                },
+                {
+                    "role": "user",
+                    "content": f"Puedes darme el codigo mermaid para representar un diagrama entidad relacion para este ejercicio (necesito que me respondas solo con el código, sin ninguna palabra extra. Al final de la respuesta ponle 'END```'):\n {preguntaUruario}\n"
+                } # END```
             ]
    
     # Si el último mensaje no es del asistente, generar una nueva respuesta
